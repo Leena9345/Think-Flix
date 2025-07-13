@@ -5,6 +5,7 @@ ThinkFlix is an AI-powered movie recommender web application that interprets nat
 “Thoughtful movie suggestions powered by natural language understanding.”
 
 🌟 Features
+
 ✅ Freeform movie search:
 Users can type what they feel like watching (e.g., “funny animated movie under 2 hours”). Gemini extracts genres & preferences, and TMDb recommends matching movies.
 
@@ -26,6 +27,7 @@ Movie Data: TMDb API
 Database: MySQL
 
 🔄 Workflow & How it works
+
 User enters a natural language movie request.
 
 Gemini interprets the input → extracts genres, moods, and keywords.
@@ -41,13 +43,12 @@ User’s query & recommendations are saved to their search history.
 (Optional) Watchlist Explainer: user enters favorite movies → Gemini summarizes their taste + TMDb recommends similar movies.
 
 ▶️ Running the App
-bash
-Copy
-Edit
+
 python app.py
 Then open: http://127.0.0.1:5000
 
 ✨ Project Highlights
+
 Uses AI + real-time APIs to create a natural movie discovery experience.
 
 Clean, dark-themed UI inspired by popular streaming platforms.
