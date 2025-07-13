@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Watchlist Explainer - ThinkFlix</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      margin: 20px auto;
+      max-width: 700px;
+      color: #333;
+    }
+    h2 {
+      color: #3498db;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+    }
+    form {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+    input[type="text"] {
+      flex-grow: 1;
+      padding: 10px 15px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline-offset: 2px;
+      outline-color: #3498db;
+      transition: border-color 0.3s ease;
+    }
+    input[type="text"]:focus {
+      border-color: #3498db;
+    }
+    button {
+      padding: 10px 20px;
+      background: #3498db;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 
+      background 0.3s ease;
+    }
+    button:hover {
+      background: #2980b9;
+    }
+    #summary {
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    #similar h4 {
+      margin-bottom: 8px;
+      color: #2c3e50;
+    }
+    #similar p {
+      margin: 4px 0;
+      color: #555;
+    }
+    a.back-link {
+      display: inline-block;
+      margin-top: 30px;
+      color: #3498db;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a.back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h2>Watchlist Explainer</h2>
+  <form id="watchlistForm" autocomplete="off">
+    <input
+      type="text"
+      id="movies"
+      placeholder="Enter favorite movies separated by commas"
+      required
+    />
+    <button type="submit">Analyze</button>
+  </form>
+
+  <div id="summary"></div>
+  <div id="similar"></div>
+
+  <a href="/" class="back-link">← Back to Home</a>
+
+  <script>
+    document.getElementById("watchlistForm").onsubmit = async (e) => {
+      e.preventDefault();
+      const movies = document.getElementById("movies").value.trim();
+
+      if (!movies) return alert("Please enter at least one movie.");
+
+      try {
+        const res = await fetch("/watchlist-explainer", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ movies }),
+        });
+        const data = await res.json();
+
+        if (res.ok) {
+          document.getElementById("summary").innerText = "Summary: " + data.summary;
+          document.getElementById("similar").innerHTML =
+            "<h4>Similar Movies:</h4>" +
+            data.similar
+              .map((m) => `<p>${m.title} (${m.release_date})</p>`)
+              .join("");
+        } else {
+          alert(data.error || "Failed to get watchlist explanation.");
+        }
+      } catch (err) {
+        alert("Network error.");
+      }
+    };
+  </script>
+</body>
+</html>

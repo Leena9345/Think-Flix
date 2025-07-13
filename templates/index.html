@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ThinkFlix - Movie Recommender</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="overlay">
+  <header>
+    <div class="left">Welcome, {{ username }}</div>
+    <div class="title">ThinkFlix</div>
+    <div class="right">
+      
+      <a href="/logout">Logout</a>
+    </div>
+  </header>
+  <main>
+    <form id="recommendForm" autocomplete="off">
+      <input id="query" type="text" placeholder="Describe what movie you want..." required />
+      <button type="submit">Recommend</button>
+    </form>
+    <section id="recommendations"></section>
+  </main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
