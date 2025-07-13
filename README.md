@@ -56,4 +56,5 @@ Clean, dark-themed UI inspired by popular streaming platforms.
 Search history and watchlist features for personalization.
 
 📌 Project Name Meaning
+
 ThinkFlix → Thoughtful suggestions of movies, powered by Gemini’s natural language understanding.
