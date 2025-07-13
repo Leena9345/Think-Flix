@@ -41,7 +41,7 @@ Results (title, year, overview) are shown on screen.
 
 User’s query & recommendations are saved to their search history.
 
-(Optional) Watchlist Explainer: user enters favorite movies → Gemini summarizes their taste + TMDb recommends similar movies.
+Watchlist Explainer: user enters favorite movies → Gemini summarizes their taste + TMDb recommends similar movies.
 
 **Running the App**
 
